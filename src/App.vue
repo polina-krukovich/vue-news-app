@@ -1,28 +1,58 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header/>
+    <Navbar/>
+    <NewsList/>
+    <ButtonLoadMore v-if="haveArticles"/>
+    <Footer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import NewsList from './components/NewsList';
+import ButtonLoadMore from './components/ButtomLoadMore';
+import Footer from './components/Footer';
+import store from './store';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Header,
+    Navbar,
+    NewsList,
+    ButtonLoadMore,
+    Footer
+  },
+  computed: {
+    haveArticles() {
+      return store.state.articles.length === 5;
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, #0c0c0c, #1c1c1c, #202020, #1c1c1c, #0c0c0c);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+  }
+
 </style>
