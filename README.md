@@ -1,4 +1,20 @@
-# vue-news
+# NewsPoint 
+![alt text](https://raw.githubusercontent.com/polina-krukovich/vue-news-app/master/src/assets/logo_readme.png)
+
+## About
+
+> NewsPoint is a simple Web Application for searching Top official World News
+
+> Access demo at [NewsPoint](https://polina-krukovich.github.io/vue-news-app/)
+
+### Created using:
+ - [Vue.js](https://vuejs.org/)
+ - [Vuex](https://vuex.vuejs.org/)
+ - [Vue CLI](https://cli.vuejs.org/)
+ - [Webpack](https://webpack.js.org/)
+ - [Babel](https://babeljs.io/)
+ - [ESLint](https://eslint.org/)
+ - [News API](https://newsapi.org/)
 
 ## Project setup
 ```
