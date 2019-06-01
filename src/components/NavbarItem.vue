@@ -1,9 +1,11 @@
 <template>
-    <button class="item" @click.prevent="loadSourceArticles">{{ sourceName }}</button>
+    <button class="nav__item"
+            @click.prevent="loadSourceArticles">
+        {{ sourceName }}
+    </button>
 </template>
 
 <script>
-    import store from '../store';
     export default {
         name: 'NavbarItem',
         props: {
@@ -12,31 +14,38 @@
         },
         methods: {
             loadSourceArticles() {
-                store.dispatch('loadSourceArticles', this.sourceID);
+                this.$store.dispatch('loadSourceArticles', this.sourceID);
             }
         }
     }
 </script>
 
 <style scoped>
-    .item {
-        min-width: 250px;
+    .nav__item {
+        min-width: 200px;
         display: block;
-        padding: 15px 0;
+        padding: 10px 10px;
         margin: 10px 5px;
         background: transparent;
-        color: white;
+        color: #ddd;
         font-family: inherit;
         font-size: 16px;
         text-align: center;
-        border: 1px solid #44d3d7;
+        border: 1px solid #227377;
         border-radius: 5px;
         transition: 0.2s ease;
-        box-shadow: 0 14px 10px -10px #000;
+        box-shadow: 0 10px 8px -8px #000;
+        overflow: auto;
         outline: none;
     }
-    .item:hover {
+    .nav__item:hover {
         transform: translateY(-7px);
-        color: #90ffff;
+        color: #44d3d7;
+        border-color: #44d3d7;
+
+    }
+
+    @media screen and (min-width: 980px) {
+
     }
 </style>

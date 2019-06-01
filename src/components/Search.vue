@@ -1,12 +1,11 @@
 <template>
-    <div class="search-container">
-        <input class="input-search"
+    <div class="search-box">
+        <input class="search-box__input"
                type="text"
-               name="search"
                placeholder="Search news ..."
                v-model="searchValue"
                @keydown="checkKey">
-        <button class="btn-search"
+        <button class="search-box__btn"
                 @click.prevent="loadSearchArticles">
             <i class="fas fa-search"></i>
         </button>
@@ -14,8 +13,6 @@
 </template>
 
 <script>
-    import store from '../store';
-
     export default {
         name: 'Search',
         data() {
@@ -25,12 +22,12 @@
         },
         methods: {
             loadSearchArticles() {
-                store.dispatch('loadSearchArticles', this.searchValue);
+                this.$store.dispatch('loadSearchArticles', this.searchValue);
+                this.searchValue = "";
             },
             checkKey(e) {
                 if (e.keyCode === 13){
                     this.loadSearchArticles();
-                    this.searchValue = "";
                 }
             }
         }
@@ -38,44 +35,33 @@
 </script>
 
 <style scoped>
-    .search-container {
+    .search-box {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        border-radius: 20px;
-        box-shadow: 0 0 15px #000;
+        border-radius: 25px;
+        border: 2px solid #999;
+        overflow: hidden;
+        box-shadow: 0 0 14px #000;
     }
 
-    .btn-search {
+    .search-box__btn, .search-box__input {
         font-size: 20px;
         font-family: inherit;
-        padding: 10px;
-        border: 1px solid #999;
-        border-left: none;
-        outline: none;
+        padding: 15px;
         background: #1c1c1c;
         color: #999;
-        border-bottom-right-radius: 20px;
-        border-top-right-radius: 20px;
-    }
-
-    .btn-search:hover {
-        color: white;
-    }
-
-    .input-search {
-        width: 300px;
-        font-size: 20px;
-        font-family: inherit;
-        padding: 10px;
-        border: 1px solid #999;
-        border-right: none;
+        border: none;
         outline: none;
-        background: #1c1c1c;
-        color: white;
-        border-bottom-left-radius: 20px;
-        border-top-left-radius: 20px;
     }
-
+    .search-box__btn:hover {
+        color: white;
+    }
+    .search-box__input {
+        width: 180px;
+        transition: 0.4s ease-in-out;
+    }
+    .search-box__input:focus {
+        width: 400px;
+    }
 
 </style>

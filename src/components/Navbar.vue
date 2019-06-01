@@ -1,14 +1,13 @@
 <template>
-    <div class="container">
+    <nav class="nav">
         <NavbarItem v-for="source in sources"
                     :key="source.id"
                     :sourceName="source.name"
                     :sourceID="source.id"/>
-    </div>
+    </nav>
 </template>
 
 <script>
-    import store from '../store';
     import NavbarItem from './NavbarItem';
 
     export default {
@@ -18,19 +17,19 @@
         },
         computed: {
             sources() {
-                return store.state.sources;
+                return this.$store.state.sources;
             },
         }
     }
 </script>
 
 <style scoped>
-    .container {
+    .nav {
         display: flex;
         flex-direction: row;
         overflow: scroll;
     }
-    .container::-webkit-scrollbar {
+    .nav::-webkit-scrollbar {
         height: 0;
         width: 0;
     }

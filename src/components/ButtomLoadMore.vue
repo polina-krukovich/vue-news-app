@@ -1,30 +1,24 @@
 <template>
-    <div class="btn-load-more-container">
-        <button class="btn-load-more" @click.prevent="next">Load More</button>
-    </div>
+    <button class="btn_load-more"
+            @click.prevent="next">
+        Load More
+    </button>
 </template>
 
 <script>
-    import store from '../store';
 
     export default {
         name: 'ButtonLoadMore',
         methods: {
             next() {
-                store.dispatch('next');
+                this.$store.dispatch('next');
             }
         }
     }
 </script>
 
 <style scoped>
-    .btn-load-more-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 0 100px 0;
-    }
-    .btn-load-more {
+    .btn_load-more {
         max-width: 200px;
         width: 200px;
         background: #227377;
@@ -43,7 +37,7 @@
         transform-origin: bottom;
         outline: none;
     }
-    .btn-load-more:hover {
+    .btn_load-more:hover {
         background: #329397;
     }
 

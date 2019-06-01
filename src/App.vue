@@ -3,7 +3,9 @@
     <Header/>
     <Navbar/>
     <NewsList/>
-    <ButtonLoadMore v-if="haveArticles"/>
+    <div class="btn_load-more__container">
+        <ButtonLoadMore v-if="haveArticles"/>
+    </div>
     <Footer/>
   </div>
 </template>
@@ -14,7 +16,6 @@ import Navbar from './components/Navbar';
 import NewsList from './components/NewsList';
 import ButtonLoadMore from './components/ButtomLoadMore';
 import Footer from './components/Footer';
-import store from './store';
 
 export default {
   name: 'app',
@@ -27,14 +28,13 @@ export default {
   },
   computed: {
     haveArticles() {
-      return store.state.articles.length === 5;
+      return this.$store.state.articles.length === this.$store.state.articlesCount;
     }
   }
 }
 </script>
 
 <style>
-
   @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
   * {
@@ -53,6 +53,12 @@ export default {
   #app {
     display: flex;
     flex-direction: column;
+
+  }
+
+  .btn_load-more__container {
+    margin: 20px 0 120px 0;
+    align-self: center;
   }
 
 </style>

@@ -20,6 +20,7 @@ const
 export default new Vuex.Store({
   state: {
     display: 'top',
+    articlesCount: 5,
     page: 1,
     source: "",
     search: "",
@@ -90,7 +91,7 @@ export default new Vuex.Store({
     loadSearchArticles(context, search) {
       context.commit(SET_DISPLAY, SEARCH);
       context.commit(RESET_PAGE);
-      context.commit(SET_SEARCH, search)
+      context.commit(SET_SEARCH, search);
       fetch(searchNewsRequest(search, context.state.page))
           .then(data => data.json())
           .then(data => {

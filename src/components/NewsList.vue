@@ -1,14 +1,14 @@
 <template>
-    <div class="container">
-        <NewsListItem v-for="article in articles"
+    <div class="news">
+        <NewsListItem v-for="(article, index) in articles"
+                      :key="index"
                       :articleInfo="article"/>
-        <p class="msg-no-results"
+        <p class="news-list__msg_no-results"
            v-if="articles.length === 0">No results :(</p>
     </div>
 </template>
 
 <script>
-    import store from '../store';
     import NewsListItem from './NewsListItem';
 
     export default {
@@ -18,24 +18,24 @@
         },
         computed: {
             articles() {
-                return store.state.articles;
+                return this.$store.state.articles;
             }
         },
         beforeMount: function () {
-            store.dispatch('loadTopArticles');
+            this.$store.dispatch('loadTopArticles');
         }
     }
 </script>
 
 <style scoped>
-    .container {
+    .news {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         margin: 50px;
     }
-    .msg-no-results {
+    .news-list__msg_no-results {
         color: #999;
         font-size: 26px;
         font-weight: bold;

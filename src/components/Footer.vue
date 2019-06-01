@@ -1,9 +1,14 @@
 <template>
-    <div class="container">
-        <span class="text">© Copyright </span>
-        <a class="link" href="https://newsapi.org/"> NewsAPI</a>
+    <footer class="footer">
+        <span class="footer__text">
+            © Copyright
+        </span>
+        <a class="footer__link"
+           href="https://newsapi.org/">
+            NewsAPI
+        </a>
 
-    </div>
+    </footer>
 </template>
 
 <script>
@@ -13,7 +18,7 @@
 </script>
 
 <style scoped>
-    .container {
+    .footer {
         background: #000000cc;
         padding: 15px;
         display: flex;
@@ -25,17 +30,14 @@
         bottom: 0;
         width: 100%;
     }
-
-    .link {
+    .footer__link {
         text-decoration: none;
         color: #999;
     }
-
-    .link:hover{
+    .footer__link:hover{
         color: #90ffff;
     }
-
-    .text {
+    .footer__text {
         color: white;
         margin-right: 10px;
     }
